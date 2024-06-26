@@ -61,10 +61,10 @@ def draw_heat_map():
 
     # 12
     corr = df_heat.corr()
-    corr.loc['id', :] = 0
-    corr.loc[:, 'id'] = 0
+    # corr.loc['id', :] = 0 #not needed
+    # corr.loc[:, 'id'] = 0 #not needed
     corr = corr.drop(columns=['index']).drop(index='index')
-    corr.iloc[[9, 10, 13], [0]] = -0.0123 #this is done because in the img given, the values in cells referenced here happen to be -0.0, which is not a valid value, since the first column is id, every value in this should compute to 0.0; this is deliberately made -0.0123, which computes to -0.0, to conform with the img
+    # corr.iloc[[9, 10, 13], [0]] = -0.0123 #not needed
 
     # 13
     mask = np.triu(np.ones_like(corr, dtype=bool))
